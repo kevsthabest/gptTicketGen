@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Set up OpenAI API key
-openai.api_key = "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"
+openai.api_key = "OpenAI API Key"
 
 def send_message(message_log):
     # Use OpenAI's ChatCompletion API to get the chatbot's response
