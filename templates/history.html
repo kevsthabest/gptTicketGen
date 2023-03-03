@@ -1,0 +1,25 @@
+<h1>Ticket History</h1>
+<table>
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Input Text</th>
+        <th>Issues</th>
+        <th>OS</th>
+        <th>Response</th>
+        <th>Timestamp</th>
+    </tr>
+</thead>
+<tbody>
+{% for ticket in tickets %}
+    <tr>
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.input_text }}</td>
+        <td>{{ ticket.issues }}</td>
+        <td>{{ ticket.os_select }}</td>
+        <td>{{ ticket.response }}</td>
+        <td>{{ ticket.timestamp }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>

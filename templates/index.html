@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ticket Notes Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Ticket Notes Generator</h1>
+      </header>
+      <form method="POST" action="{{ url_for('index') }}">
+        <label for="issues">Issue:</label>
+        <input type="text" name="issues" id="issues" placeholder="Enter the issue">
+       
+        <label for="input_text">Ticket Notes:</label>
+        <textarea name="input_text" rows="10" cols="50" placeholder="Enter your ticket notes here"></textarea>
+
+          <label for="os_select">Select OS:</label>
+        <select name="os_select" id="os_select">
+          <option value="Windows 11">Windows 11</option>
+          <option value="Windows 10">Windows 10</option>
+          <option value="MacOS Ventura">MacOS Ventura</option>
+          <option value="MacOS Monterey">MacOS Monterey</option>
+          <option value="MacOS Big Sur">MacOS Big Sur</option>
+          <option value="iOS 15">iOS 15</option>
+          <option value="iOS 14">iOS 14</option>
+          <option value="Android 12">Android 12</option>
+          <option value="Android 11">Android 11</option>
+        </select>
+        <button class="generate-button" type="submit">Generate</button>
+      </form>
+      {% if output_text %}
+      <section>
+        <h2>Optimized Ticket Notes:</h2>
+        <pre><code id="code">{{ output_text }}</code></pre>
+        <button class="copy-button" onclick="copyCode()">Copy</button> 
+      </section>
+      {% endif %}
+    </div>
+    <footer>
+      <a href="/history">View History</a>
+    </footer>
+    <script>
+      function copyCode() {
+        var code = document.getElementById("code");
+        var textArea = document.createElement("textarea");
+        textArea.value = code.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("Copied!");
+        var copyButton = document.querySelector(".copy-button");
+        copyButton.textContent = "Copied!";
+      }
+    </script>
+  </body>
+</html>
